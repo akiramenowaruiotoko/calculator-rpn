@@ -1,6 +1,6 @@
 ﻿namespace calculator_simple
 {
-    partial class Form1
+    partial class FormCalculator
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,12 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            labelTitle = new Label();
+            SuspendLayout();
+            // 
+            // labelTitle
+            // 
+            labelTitle.AutoSize = true;
+            labelTitle.Font = new Font("Yu Gothic UI", 18F);
+            labelTitle.Location = new Point(12, 9);
+            labelTitle.Name = "labelTitle";
+            labelTitle.Size = new Size(389, 65);
+            labelTitle.TabIndex = 0;
+            labelTitle.Text = "calculator-simple";
+            // 
+            // FormCalculator
+            // 
+            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(labelTitle);
+            Name = "FormCalculator";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label labelTitle;
     }
 }
