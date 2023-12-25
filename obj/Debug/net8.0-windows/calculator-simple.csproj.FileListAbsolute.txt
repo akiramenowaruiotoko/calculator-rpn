@@ -1,0 +1,17 @@
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\bin\Debug\net8.0-windows\calculator-simple.exe
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\bin\Debug\net8.0-windows\calculator-simple.deps.json
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\bin\Debug\net8.0-windows\calculator-simple.runtimeconfig.json
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\bin\Debug\net8.0-windows\calculator-simple.dll
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\bin\Debug\net8.0-windows\calculator-simple.pdb
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\obj\Debug\net8.0-windows\calculator_simple.Form1.resources
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\obj\Debug\net8.0-windows\calculator-simple.csproj.GenerateResource.cache
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\obj\Debug\net8.0-windows\calculator-simple.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\obj\Debug\net8.0-windows\calculator-simple.AssemblyInfoInputs.cache
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\obj\Debug\net8.0-windows\calculator-simple.AssemblyInfo.cs
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\obj\Debug\net8.0-windows\calculator-simple.csproj.CoreCompileInputs.cache
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\obj\Debug\net8.0-windows\calculator-simple.sourcelink.json
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\obj\Debug\net8.0-windows\calculator-simple.dll
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\obj\Debug\net8.0-windows\refint\calculator-simple.dll
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\obj\Debug\net8.0-windows\calculator-simple.pdb
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\obj\Debug\net8.0-windows\calculator-simple.genruntimeconfig.cache
+C:\Users\akiramenowaruiotoko\Desktop\github\calculator-simple\obj\Debug\net8.0-windows\ref\calculator-simple.dll
