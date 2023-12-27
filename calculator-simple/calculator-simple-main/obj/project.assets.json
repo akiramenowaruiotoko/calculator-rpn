@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\akiramenowaruiotoko\\Desktop\\github\\calculator-simple\\calculator-simple.csproj",
+      "projectUniqueName": "C:\\Users\\akiramenowaruiotoko\\Desktop\\github\\calculator-simple\\calculator-simple\\calculator-simple-main\\calculator-simple.csproj",
       "projectName": "calculator-simple",
-      "projectPath": "C:\\Users\\akiramenowaruiotoko\\Desktop\\github\\calculator-simple\\calculator-simple.csproj",
+      "projectPath": "C:\\Users\\akiramenowaruiotoko\\Desktop\\github\\calculator-simple\\calculator-simple\\calculator-simple-main\\calculator-simple.csproj",
       "packagesPath": "C:\\Users\\akiramenowaruiotoko\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\akiramenowaruiotoko\\Desktop\\github\\calculator-simple\\obj\\",
+      "outputPath": "C:\\Users\\akiramenowaruiotoko\\Desktop\\github\\calculator-simple\\calculator-simple\\calculator-simple-main\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\akiramenowaruiotoko\\AppData\\Roaming\\NuGet\\NuGet.Config",
