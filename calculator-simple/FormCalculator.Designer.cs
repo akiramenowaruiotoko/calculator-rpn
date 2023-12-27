@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             labelTitle = new Label();
+            label1 = new Label();
             SuspendLayout();
             // 
             // labelTitle
@@ -41,11 +42,21 @@
             labelTitle.TabIndex = 0;
             labelTitle.Text = "calculator-simple";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(37, 219);
+            label1.Name = "label1";
+            label1.Size = new Size(78, 32);
+            label1.TabIndex = 1;
+            label1.Text = "label1";
+            // 
             // FormCalculator
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(labelTitle);
             Name = "FormCalculator";
             Text = "Form1";
@@ -56,5 +67,6 @@
         #endregion
 
         private Label labelTitle;
+        private Label label1;
     }
 }
