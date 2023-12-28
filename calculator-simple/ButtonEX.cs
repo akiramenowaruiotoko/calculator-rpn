@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace calculator_simple
 {
-    internal class ButtonEX : Button
+    internal class buttonEX
     {
-
     }
 }
