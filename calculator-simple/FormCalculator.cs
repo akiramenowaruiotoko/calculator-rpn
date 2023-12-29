@@ -20,7 +20,18 @@ namespace calculator_simple
         /// </summary>
         private void FormCalculator_KeyUp(object? sender, KeyEventArgs e)
         {
-            int keyNum = (int)e.KeyCode - 0x30;
+            int keyNum = (int)e.KeyCode;
+            // キーボードとキーパッドの値を0_9に修正
+            if ((keyNum >= 0x30) && (keyNum <= 0x39))
+            {
+                keyNum -= 0x30;
+            }
+            else if ((keyNum >= 0x60) && (keyNum <= 0x69 ))
+            {
+                keyNum -= 0x60;
+            }
+
+            // NumSet関数呼び出し
             if ((keyNum >= 0) && (keyNum <= 9))
             {
                 NumSet(keyNum.ToString());
