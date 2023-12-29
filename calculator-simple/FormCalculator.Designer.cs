@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             labelTitle = new Label();
-            labelStack1 = new Label();
-            labelStack2 = new Label();
+            labelInput = new Label();
+            textInput = new Label();
             NumPad0 = new ButtonEX();
             NumPad1 = new ButtonEX();
             NumPad2 = new ButtonEX();
@@ -54,26 +54,26 @@
             labelTitle.TabIndex = 0;
             labelTitle.Text = "calculator-simple";
             // 
-            // labelStack1
+            // labelInput
             // 
-            labelStack1.AutoSize = true;
-            labelStack1.Font = new Font("Yu Gothic UI", 12F);
-            labelStack1.Location = new Point(43, 110);
-            labelStack1.Name = "labelStack1";
-            labelStack1.Size = new Size(94, 45);
-            labelStack1.TabIndex = 1;
-            labelStack1.Text = "input";
+            labelInput.AutoSize = true;
+            labelInput.Font = new Font("Yu Gothic UI", 12F);
+            labelInput.Location = new Point(43, 110);
+            labelInput.Name = "labelInput";
+            labelInput.Size = new Size(94, 45);
+            labelInput.TabIndex = 1;
+            labelInput.Text = "input";
             // 
-            // labelStack2
+            // textInput
             // 
-            labelStack2.BackColor = SystemColors.ButtonHighlight;
-            labelStack2.Font = new Font("Yu Gothic UI", 12F);
-            labelStack2.Location = new Point(163, 110);
-            labelStack2.Name = "labelStack2";
-            labelStack2.Size = new Size(404, 45);
-            labelStack2.TabIndex = 2;
-            labelStack2.Text = "0";
-            labelStack2.TextAlign = ContentAlignment.MiddleRight;
+            textInput.BackColor = SystemColors.ButtonHighlight;
+            textInput.Font = new Font("Yu Gothic UI", 12F);
+            textInput.Location = new Point(163, 110);
+            textInput.Name = "textInput";
+            textInput.Size = new Size(404, 45);
+            textInput.TabIndex = 2;
+            textInput.Text = "0";
+            textInput.TextAlign = ContentAlignment.MiddleRight;
             // 
             // NumPad0
             // 
@@ -83,6 +83,7 @@
             NumPad0.TabIndex = 3;
             NumPad0.Text = "0";
             NumPad0.UseVisualStyleBackColor = true;
+            NumPad0.Click += NumPads_Click;
             // 
             // NumPad1
             // 
@@ -190,8 +191,8 @@
             Controls.Add(NumPad2);
             Controls.Add(NumPad1);
             Controls.Add(NumPad0);
-            Controls.Add(labelStack2);
-            Controls.Add(labelStack1);
+            Controls.Add(textInput);
+            Controls.Add(labelInput);
             Controls.Add(labelTitle);
             Name = "FormCalculator";
             Text = "Form1";
@@ -202,8 +203,8 @@
         #endregion
 
         private Label labelTitle;
-        private Label labelStack1;
-        private Label labelStack2;
+        private Label labelInput;
+        private Label textInput;
         private ButtonEX NumPad0;
         private ButtonEX NumPad1;
         private ButtonEX NumPad2;
