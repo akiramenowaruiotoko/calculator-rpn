@@ -6,5 +6,10 @@ namespace calculator_simple
         {
             InitializeComponent();
         }
+
+        private void FormCalculator_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
