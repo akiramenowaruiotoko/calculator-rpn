@@ -36,11 +36,10 @@ namespace calculator_simple
             {
                 NumSet(keyNum.ToString());
             }
-
         }
-        private void NumPads_Click(object sender, EventArgs e)
+        private void NumButton_Click(object sender, EventArgs e)
         {
-
+            NumSet(((Button)sender).Text);
         }
         /// <summary>
         ///  inputèàóù

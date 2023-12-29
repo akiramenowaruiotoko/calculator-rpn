@@ -83,7 +83,7 @@
             NumPad0.TabIndex = 3;
             NumPad0.Text = "0";
             NumPad0.UseVisualStyleBackColor = true;
-            NumPad0.Click += NumPads_Click;
+            NumPad0.Click += NumButton_Click;
             // 
             // NumPad1
             // 
@@ -93,6 +93,7 @@
             NumPad1.TabIndex = 4;
             NumPad1.Text = "1";
             NumPad1.UseVisualStyleBackColor = true;
+            NumPad1.Click += NumButton_Click;
             // 
             // NumPad2
             // 
@@ -102,6 +103,7 @@
             NumPad2.TabIndex = 5;
             NumPad2.Text = "2";
             NumPad2.UseVisualStyleBackColor = true;
+            NumPad2.Click += NumButton_Click;
             // 
             // NumPad3
             // 
@@ -111,6 +113,7 @@
             NumPad3.TabIndex = 6;
             NumPad3.Text = "3";
             NumPad3.UseVisualStyleBackColor = true;
+            NumPad3.Click += NumButton_Click;
             // 
             // NumPad4
             // 
@@ -120,6 +123,7 @@
             NumPad4.TabIndex = 7;
             NumPad4.Text = "4";
             NumPad4.UseVisualStyleBackColor = true;
+            NumPad4.Click += NumButton_Click;
             // 
             // NumPad5
             // 
@@ -129,6 +133,7 @@
             NumPad5.TabIndex = 8;
             NumPad5.Text = "5";
             NumPad5.UseVisualStyleBackColor = true;
+            NumPad5.Click += NumButton_Click;
             // 
             // NumPad6
             // 
@@ -138,6 +143,7 @@
             NumPad6.TabIndex = 9;
             NumPad6.Text = "6";
             NumPad6.UseVisualStyleBackColor = true;
+            NumPad6.Click += NumButton_Click;
             // 
             // NumPad7
             // 
@@ -147,6 +153,7 @@
             NumPad7.TabIndex = 10;
             NumPad7.Text = "7";
             NumPad7.UseVisualStyleBackColor = true;
+            NumPad7.Click += NumButton_Click;
             // 
             // NumPad8
             // 
@@ -156,6 +163,7 @@
             NumPad8.TabIndex = 11;
             NumPad8.Text = "8";
             NumPad8.UseVisualStyleBackColor = true;
+            NumPad8.Click += NumButton_Click;
             // 
             // NumPad9
             // 
@@ -165,6 +173,7 @@
             NumPad9.TabIndex = 12;
             NumPad9.Text = "9";
             NumPad9.UseVisualStyleBackColor = true;
+            NumPad9.Click += NumButton_Click;
             // 
             // Decimal
             // 
