@@ -6,48 +6,52 @@ namespace calculator_simple
         {
             InitializeComponent();
 
-            // Form全体でキーイベントを検出
+            // Detect key events throughout the form
             this.KeyPreview = true;
             this.KeyUp += FormCalculator_KeyUp;
         }
-
-        // textInput初期設定
+        // initial setting textInput
         private bool inputOverwrite = true;
-        //private bool decimalStatus = false;
+        private bool decimalStatus = false;
 
         /// <summary>
-        ///  keyEventの分岐
+        ///  branch KeyUp events
         /// </summary>
         private void FormCalculator_KeyUp(object? sender, KeyEventArgs e)
         {
-            int keyNum = (int)e.KeyCode;
-            // キーボードとキーパッドの値を0_9に修正
-            if ((keyNum >= 0x30) && (keyNum <= 0x39))
+            int eValue = e.KeyValue;
+            // Replace keyboard and keypad KeyCode values from 0 to 9
+            if ((eValue >= (int)Keys.D0) && (eValue <= (int)Keys.D9))
             {
-                keyNum -= 0x30;
+                eValue -= (int)Keys.D0;
             }
-            else if ((keyNum >= 0x60) && (keyNum <= 0x69 ))
+            else if ((eValue >= (int)Keys.NumPad0) && (eValue >= (int)Keys.NumPad9))
             {
-                keyNum -= 0x60;
+                eValue -= (int)Keys.NumPad0;
             }
-
-            // NumSet関数呼び出し
-            if ((keyNum >= 0) && (keyNum <= 9))
+            // switch call function
+            switch (e.KeyCode)
             {
-                NumSet(keyNum.ToString());
+                case Keys.Decimal:
+                case Keys.OemPeriod:
+                    Decimal_Click(this, e);
+                    break;
+                default:
+                    // call NumSet if eCaode is 0 to 9
+                    NumSet(eValue.ToString());
+                    return;
             }
         }
         private void NumButton_Click(object sender, EventArgs e)
         {
+            // call NumSet
             NumSet(((Button)sender).Text);
         }
-        /// <summary>
-        ///  input処理
-        /// </summary>
         private void NumSet(string numText)
         {
-            if (inputOverwrite == true)
-            {
+            // update textInput.Text
+            if (inputOverwrite)
+            { 
                 textInput.Text = numText;
                 if (numText != "0")
                 {
@@ -57,6 +61,14 @@ namespace calculator_simple
             else
             {
                 textInput.Text += numText;
+            }
+        }
+        private void Decimal_Click(object sender, EventArgs e)
+        {
+            if (!decimalStatus)
+            {
+                textInput.Text += ".";
+                decimalStatus = true;
             }
         }
     }

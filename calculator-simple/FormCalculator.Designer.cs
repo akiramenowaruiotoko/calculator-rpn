@@ -183,6 +183,7 @@
             Decimal.TabIndex = 13;
             Decimal.Text = ".";
             Decimal.UseVisualStyleBackColor = true;
+            Decimal.Click += Decimal_Click;
             // 
             // FormCalculator
             // 
