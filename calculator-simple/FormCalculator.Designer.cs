@@ -31,17 +31,18 @@
             labelTitle = new Label();
             labelInput = new Label();
             textInput = new Label();
-            NumPad0 = new ButtonEX();
-            NumPad1 = new ButtonEX();
-            NumPad2 = new ButtonEX();
-            NumPad3 = new ButtonEX();
-            NumPad4 = new ButtonEX();
-            NumPad5 = new ButtonEX();
-            NumPad6 = new ButtonEX();
-            NumPad7 = new ButtonEX();
-            NumPad8 = new ButtonEX();
-            NumPad9 = new ButtonEX();
-            Decimal = new ButtonEX();
+            buttonEx0 = new ButtonEX();
+            buttonEx1 = new ButtonEX();
+            buttonEx2 = new ButtonEX();
+            buttonEx3 = new ButtonEX();
+            buttonEx4 = new ButtonEX();
+            buttonEx5 = new ButtonEX();
+            buttonEx6 = new ButtonEX();
+            buttonEx7 = new ButtonEX();
+            buttonEx8 = new ButtonEX();
+            buttonEx9 = new ButtonEX();
+            buttonexDecimal = new ButtonEX();
+            buttonexC = new ButtonEX();
             SuspendLayout();
             // 
             // labelTitle
@@ -75,132 +76,143 @@
             textInput.Text = "0";
             textInput.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // NumPad0
+            // buttonEx0
             // 
-            NumPad0.Location = new Point(159, 437);
-            NumPad0.Name = "NumPad0";
-            NumPad0.Size = new Size(130, 59);
-            NumPad0.TabIndex = 3;
-            NumPad0.Text = "0";
-            NumPad0.UseVisualStyleBackColor = true;
-            NumPad0.Click += NumButton_Click;
+            buttonEx0.Location = new Point(159, 437);
+            buttonEx0.Name = "buttonEx0";
+            buttonEx0.Size = new Size(130, 59);
+            buttonEx0.TabIndex = 3;
+            buttonEx0.Text = "0";
+            buttonEx0.UseVisualStyleBackColor = true;
+            buttonEx0.Click += ButtonNums_Click;
             // 
-            // NumPad1
+            // buttonEx1
             // 
-            NumPad1.Location = new Point(159, 372);
-            NumPad1.Name = "NumPad1";
-            NumPad1.Size = new Size(62, 59);
-            NumPad1.TabIndex = 4;
-            NumPad1.Text = "1";
-            NumPad1.UseVisualStyleBackColor = true;
-            NumPad1.Click += NumButton_Click;
+            buttonEx1.Location = new Point(159, 372);
+            buttonEx1.Name = "buttonEx1";
+            buttonEx1.Size = new Size(62, 59);
+            buttonEx1.TabIndex = 4;
+            buttonEx1.Text = "1";
+            buttonEx1.UseVisualStyleBackColor = true;
+            buttonEx1.Click += ButtonNums_Click;
             // 
-            // NumPad2
+            // buttonEx2
             // 
-            NumPad2.Location = new Point(227, 372);
-            NumPad2.Name = "NumPad2";
-            NumPad2.Size = new Size(62, 59);
-            NumPad2.TabIndex = 5;
-            NumPad2.Text = "2";
-            NumPad2.UseVisualStyleBackColor = true;
-            NumPad2.Click += NumButton_Click;
+            buttonEx2.Location = new Point(227, 372);
+            buttonEx2.Name = "buttonEx2";
+            buttonEx2.Size = new Size(62, 59);
+            buttonEx2.TabIndex = 5;
+            buttonEx2.Text = "2";
+            buttonEx2.UseVisualStyleBackColor = true;
+            buttonEx2.Click += ButtonNums_Click;
             // 
-            // NumPad3
+            // buttonEx3
             // 
-            NumPad3.Location = new Point(295, 372);
-            NumPad3.Name = "NumPad3";
-            NumPad3.Size = new Size(62, 59);
-            NumPad3.TabIndex = 6;
-            NumPad3.Text = "3";
-            NumPad3.UseVisualStyleBackColor = true;
-            NumPad3.Click += NumButton_Click;
+            buttonEx3.Location = new Point(295, 372);
+            buttonEx3.Name = "buttonEx3";
+            buttonEx3.Size = new Size(62, 59);
+            buttonEx3.TabIndex = 6;
+            buttonEx3.Text = "3";
+            buttonEx3.UseVisualStyleBackColor = true;
+            buttonEx3.Click += ButtonNums_Click;
             // 
-            // NumPad4
+            // buttonEx4
             // 
-            NumPad4.Location = new Point(159, 307);
-            NumPad4.Name = "NumPad4";
-            NumPad4.Size = new Size(62, 59);
-            NumPad4.TabIndex = 7;
-            NumPad4.Text = "4";
-            NumPad4.UseVisualStyleBackColor = true;
-            NumPad4.Click += NumButton_Click;
+            buttonEx4.Location = new Point(159, 307);
+            buttonEx4.Name = "buttonEx4";
+            buttonEx4.Size = new Size(62, 59);
+            buttonEx4.TabIndex = 7;
+            buttonEx4.Text = "4";
+            buttonEx4.UseVisualStyleBackColor = true;
+            buttonEx4.Click += ButtonNums_Click;
             // 
-            // NumPad5
+            // buttonEx5
             // 
-            NumPad5.Location = new Point(227, 307);
-            NumPad5.Name = "NumPad5";
-            NumPad5.Size = new Size(62, 59);
-            NumPad5.TabIndex = 8;
-            NumPad5.Text = "5";
-            NumPad5.UseVisualStyleBackColor = true;
-            NumPad5.Click += NumButton_Click;
+            buttonEx5.Location = new Point(227, 307);
+            buttonEx5.Name = "buttonEx5";
+            buttonEx5.Size = new Size(62, 59);
+            buttonEx5.TabIndex = 8;
+            buttonEx5.Text = "5";
+            buttonEx5.UseVisualStyleBackColor = true;
+            buttonEx5.Click += ButtonNums_Click;
             // 
-            // NumPad6
+            // buttonEx6
             // 
-            NumPad6.Location = new Point(295, 307);
-            NumPad6.Name = "NumPad6";
-            NumPad6.Size = new Size(62, 59);
-            NumPad6.TabIndex = 9;
-            NumPad6.Text = "6";
-            NumPad6.UseVisualStyleBackColor = true;
-            NumPad6.Click += NumButton_Click;
+            buttonEx6.Location = new Point(295, 307);
+            buttonEx6.Name = "buttonEx6";
+            buttonEx6.Size = new Size(62, 59);
+            buttonEx6.TabIndex = 9;
+            buttonEx6.Text = "6";
+            buttonEx6.UseVisualStyleBackColor = true;
+            buttonEx6.Click += ButtonNums_Click;
             // 
-            // NumPad7
+            // buttonEx7
             // 
-            NumPad7.Location = new Point(159, 242);
-            NumPad7.Name = "NumPad7";
-            NumPad7.Size = new Size(62, 59);
-            NumPad7.TabIndex = 10;
-            NumPad7.Text = "7";
-            NumPad7.UseVisualStyleBackColor = true;
-            NumPad7.Click += NumButton_Click;
+            buttonEx7.Location = new Point(159, 242);
+            buttonEx7.Name = "buttonEx7";
+            buttonEx7.Size = new Size(62, 59);
+            buttonEx7.TabIndex = 10;
+            buttonEx7.Text = "7";
+            buttonEx7.UseVisualStyleBackColor = true;
+            buttonEx7.Click += ButtonNums_Click;
             // 
-            // NumPad8
+            // buttonEx8
             // 
-            NumPad8.Location = new Point(227, 242);
-            NumPad8.Name = "NumPad8";
-            NumPad8.Size = new Size(62, 59);
-            NumPad8.TabIndex = 11;
-            NumPad8.Text = "8";
-            NumPad8.UseVisualStyleBackColor = true;
-            NumPad8.Click += NumButton_Click;
+            buttonEx8.Location = new Point(227, 242);
+            buttonEx8.Name = "buttonEx8";
+            buttonEx8.Size = new Size(62, 59);
+            buttonEx8.TabIndex = 11;
+            buttonEx8.Text = "8";
+            buttonEx8.UseVisualStyleBackColor = true;
+            buttonEx8.Click += ButtonNums_Click;
             // 
-            // NumPad9
+            // buttonEx9
             // 
-            NumPad9.Location = new Point(295, 242);
-            NumPad9.Name = "NumPad9";
-            NumPad9.Size = new Size(62, 59);
-            NumPad9.TabIndex = 12;
-            NumPad9.Text = "9";
-            NumPad9.UseVisualStyleBackColor = true;
-            NumPad9.Click += NumButton_Click;
+            buttonEx9.Location = new Point(295, 242);
+            buttonEx9.Name = "buttonEx9";
+            buttonEx9.Size = new Size(62, 59);
+            buttonEx9.TabIndex = 12;
+            buttonEx9.Text = "9";
+            buttonEx9.UseVisualStyleBackColor = true;
+            buttonEx9.Click += ButtonNums_Click;
             // 
-            // Decimal
+            // buttonexDecimal
             // 
-            Decimal.Location = new Point(295, 437);
-            Decimal.Name = "Decimal";
-            Decimal.Size = new Size(62, 59);
-            Decimal.TabIndex = 13;
-            Decimal.Text = ".";
-            Decimal.UseVisualStyleBackColor = true;
-            Decimal.Click += Decimal_Click;
+            buttonexDecimal.Location = new Point(295, 437);
+            buttonexDecimal.Name = "buttonexDecimal";
+            buttonexDecimal.Size = new Size(62, 59);
+            buttonexDecimal.TabIndex = 13;
+            buttonexDecimal.Text = ".";
+            buttonexDecimal.UseVisualStyleBackColor = true;
+            buttonexDecimal.Click += ButtonDecimal_Click;
+            // 
+            // buttonexC
+            // 
+            buttonexC.Location = new Point(159, 177);
+            buttonexC.Name = "buttonexC";
+            buttonexC.Size = new Size(62, 59);
+            buttonexC.TabIndex = 14;
+            buttonexC.Text = "C";
+            buttonexC.UseVisualStyleBackColor = true;
+            buttonexC.Click += ButtonC_Click;
             // 
             // FormCalculator
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(941, 742);
-            Controls.Add(Decimal);
-            Controls.Add(NumPad9);
-            Controls.Add(NumPad8);
-            Controls.Add(NumPad7);
-            Controls.Add(NumPad6);
-            Controls.Add(NumPad5);
-            Controls.Add(NumPad4);
-            Controls.Add(NumPad3);
-            Controls.Add(NumPad2);
-            Controls.Add(NumPad1);
-            Controls.Add(NumPad0);
+            Controls.Add(buttonexC);
+            Controls.Add(buttonexDecimal);
+            Controls.Add(buttonEx9);
+            Controls.Add(buttonEx8);
+            Controls.Add(buttonEx7);
+            Controls.Add(buttonEx6);
+            Controls.Add(buttonEx5);
+            Controls.Add(buttonEx4);
+            Controls.Add(buttonEx3);
+            Controls.Add(buttonEx2);
+            Controls.Add(buttonEx1);
+            Controls.Add(buttonEx0);
             Controls.Add(textInput);
             Controls.Add(labelInput);
             Controls.Add(labelTitle);
@@ -215,16 +227,17 @@
         private Label labelTitle;
         private Label labelInput;
         private Label textInput;
-        private ButtonEX NumPad0;
-        private ButtonEX NumPad1;
-        private ButtonEX NumPad2;
-        private ButtonEX NumPad3;
-        private ButtonEX NumPad4;
-        private ButtonEX NumPad5;
-        private ButtonEX NumPad6;
-        private ButtonEX NumPad7;
-        private ButtonEX NumPad8;
-        private ButtonEX NumPad9;
-        private ButtonEX Decimal;
+        private ButtonEX buttonEx0;
+        private ButtonEX buttonEx1;
+        private ButtonEX buttonEx2;
+        private ButtonEX buttonEx3;
+        private ButtonEX buttonEx4;
+        private ButtonEX buttonEx5;
+        private ButtonEX buttonEx6;
+        private ButtonEX buttonEx7;
+        private ButtonEX buttonEx8;
+        private ButtonEX buttonEx9;
+        private ButtonEX buttonexDecimal;
+        private ButtonEX buttonexC;
     }
 }

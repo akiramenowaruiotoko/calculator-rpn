@@ -36,7 +36,10 @@ namespace calculator_simple
             {
                 case Keys.Decimal:
                 case Keys.OemPeriod:
-                    Decimal_Click(this, e);
+                    ButtonDecimal_Click(this, e);
+                    break;
+                case Keys.C:
+                    ButtonC_Click(this, e);
                     break;
                 default:
                     // call NumSet if eValue is 0 to 9
@@ -48,11 +51,33 @@ namespace calculator_simple
             }
         }
 
-        private void NumButton_Click(object sender, EventArgs e)
+        /// <summary>
+        ///  Button_Cleck events
+        /// </summary>
+        private void ButtonNums_Click(object sender, EventArgs e)
         {
             // call NumSet
             NumSet(((Button)sender).Text);
         }
+        private void ButtonDecimal_Click(object sender, EventArgs e)
+        {
+            if (!decimalStatus)
+            {
+                textInput.Text += ".";
+                decimalStatus = true;
+                inputOverwrite = false;
+            }
+        }
+        private void ButtonC_Click(object sender, EventArgs e)
+        {
+            textInput.Text = "0";
+            decimalStatus = false;
+            inputOverwrite = true;
+        }
+
+        /// <summary>
+        ///  functions
+        /// </summary>
         private void NumSet(string numText)
         {
             // update textInput.Text
@@ -67,15 +92,6 @@ namespace calculator_simple
             else
             {
                 textInput.Text += numText;
-            }
-        }
-        private void Decimal_Click(object sender, EventArgs e)
-        {
-            if (!decimalStatus)
-            {
-                textInput.Text += ".";
-                decimalStatus = true;
-                inputOverwrite = false;
             }
         }
     }
