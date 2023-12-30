@@ -10,6 +10,7 @@ namespace calculator_simple
             this.KeyPreview = true;
             this.KeyUp += FormCalculator_KeyUp;
         }
+
         // initial setting textInput
         private bool inputOverwrite = true;
         private bool decimalStatus = false;
@@ -29,6 +30,7 @@ namespace calculator_simple
             {
                 eValue -= (int)Keys.NumPad0;
             }
+
             // switch call function
             switch (e.KeyCode)
             {
@@ -37,11 +39,15 @@ namespace calculator_simple
                     Decimal_Click(this, e);
                     break;
                 default:
-                    // call NumSet if eCaode is 0 to 9
-                    NumSet(eValue.ToString());
-                    return;
+                    // call NumSet if eValue is 0 to 9
+                    if ((eValue >= 0) && (eValue <= 9))
+                    {
+                        NumSet(eValue.ToString());
+                    }
+                    break;
             }
         }
+
         private void NumButton_Click(object sender, EventArgs e)
         {
             // call NumSet
@@ -51,7 +57,7 @@ namespace calculator_simple
         {
             // update textInput.Text
             if (inputOverwrite)
-            { 
+            {
                 textInput.Text = numText;
                 if (numText != "0")
                 {
@@ -69,6 +75,7 @@ namespace calculator_simple
             {
                 textInput.Text += ".";
                 decimalStatus = true;
+                inputOverwrite = false;
             }
         }
     }
