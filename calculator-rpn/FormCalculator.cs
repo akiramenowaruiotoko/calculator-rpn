@@ -2,6 +2,9 @@ namespace calculator_simple
 {
     public partial class FormCalculator : Form
     {
+        /// <summary>
+        ///  initial setting
+        /// </summary>
         public FormCalculator()
         {
             InitializeComponent();
@@ -11,9 +14,12 @@ namespace calculator_simple
             this.KeyUp += FormCalculator_KeyUp;
         }
 
-        // initial setting textInput
+        // setting textInput
         private bool inputOverwrite = true;
         private bool decimalStatus = false;
+
+        // Instantiate .NET Stack collection
+        private Stack<double> cStack = new Stack<double>();
 
         /// <summary>
         ///  branch KeyUp events
@@ -93,6 +99,46 @@ namespace calculator_simple
             {
                 textInput.Text += numText;
             }
+        }
+
+        private void ButtonexEnter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonexStackClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonexSign_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonexAllClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonexAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonexSubtract_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonexMultiply_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonexDivide_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
