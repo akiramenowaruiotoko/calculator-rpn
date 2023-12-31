@@ -19,7 +19,7 @@ namespace calculator_simple
         private bool decimalStatus = false;
 
         // Variable for input key identification
-        string markText;
+        string markText = "";
 
         // Instantiate .NET Stack collection
         private Stack<double> cStack = new Stack<double>();
@@ -89,7 +89,7 @@ namespace calculator_simple
         }
 
         /// <summary>
-        ///  Button_Cleck events
+        ///  Button_Click events
         /// </summary>
         private void ButtonNums_Click(object sender, EventArgs e)
         {
@@ -107,6 +107,12 @@ namespace calculator_simple
         /// </summary>
         private void NumSet(string numText)
         {
+            // Digit limit 16 digits
+            if (textInput.Text.Length > 16)
+            {
+                textComment.Text = "inputText is Overflow : digit limit 16";
+                return;
+            }
             // update textInput.Text
             if (inputOverwrite)
             {
@@ -173,6 +179,12 @@ namespace calculator_simple
             switch (mark)
             {
                 case "Enter":
+                    // stack limit 5
+                    if(cStack.Count >= 5)
+                    {
+                        textComment.Text = "stack is Overflow : stack limit 5";
+                        return;
+                    }
                     // Push the value of calcNum in stack
                     cStack.Push(calcNum);
                     goto stackLabelUpdate;
