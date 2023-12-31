@@ -1,3 +1,4 @@
+using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace calculator_simple
@@ -242,7 +243,10 @@ namespace calculator_simple
             // update textStack
             for (int i = 5; i > 0; i--)
             {
+                // Sequential number control to textStack
                 Control[] textStacks = this.Controls.Find($"textStack{i}", true);
+
+                // output stack to the textStack.text 
                 if (cStack.Count >= i)
                 {
                     textStacks[0].Text = cStack.ElementAt(i - 1).ToString();
