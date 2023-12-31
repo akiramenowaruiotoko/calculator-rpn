@@ -54,7 +54,7 @@ namespace calculator_simple
                     markText = "C";
                     break;
                 case Keys.S:
-                    markText = "S";
+                    markText = "+/-";
                     break;
                 case Keys.Delete:
                     markText = "AC";
@@ -71,9 +71,11 @@ namespace calculator_simple
                     markText = "-";
                     break;
                 case Keys.Multiply:
+                case Keys.Oem1:
                     markText = "Å~";
                     break;
                 case Keys.Divide:
+                case Keys.Oem2:
                     markText = "ÅÄ"; break;
                 default:
                     // call NumSet if eValue is 0 to 9
@@ -83,7 +85,7 @@ namespace calculator_simple
                     }
                     return;
             }
-            //calc(markText);
+            Calc(markText);
         }
 
         /// <summary>
@@ -122,7 +124,7 @@ namespace calculator_simple
         private void Calc(string mark)
         {
             // initialize textInput
-            textInput.Text = "";
+            textComment.Text = "";
 
             // inputlabel Excluded processing switch
             switch (mark)
@@ -177,7 +179,7 @@ namespace calculator_simple
                 case "C":
                     return;
                 case "AC":
-                    textInput.Text = "";
+                    textStack1.Text = "";
                     cStack.Clear();
                     return;
                 default: break;
