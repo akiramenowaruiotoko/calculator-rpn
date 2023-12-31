@@ -1,3 +1,5 @@
+using static System.Net.Mime.MediaTypeNames;
+
 namespace calculator_simple
 {
     public partial class FormCalculator : Form
@@ -175,7 +177,7 @@ namespace calculator_simple
                 decimalStatus = false;
                 inputOverwrite = true;
 
-            // inputlabel Subject processing
+            // inputlabel Subject processing switch
             switch (mark)
             {
                 case "Enter":
@@ -191,9 +193,8 @@ namespace calculator_simple
                 case "C":
                     return;
                 case "AC":
-                    textStack1.Text = "";
                     cStack.Clear();
-                    return;
+                    goto stackLabelUpdate;
                 default: break;
             }
 
@@ -238,13 +239,18 @@ namespace calculator_simple
             // goto
             stackLabelUpdate:
 
-            // initialize textStacks
-            textStack1.Text = "";
-
             // update textStack
-            for (int i = cStack.Count; i > 0; i--)
+            for (int i = 5; i > 0; i--)
             {
-                textStack1.Text += "s[" + i + "]:" + cStack.ElementAt(i - 1) + ",";
+                Control[] textStacks = this.Controls.Find($"textStack{i}", true);
+                if (cStack.Count >= i)
+                {
+                    textStacks[0].Text = cStack.ElementAt(i - 1).ToString();
+                }
+                else
+                {
+                    textStacks[0].Text = "";
+                }
             }
         }
     }
