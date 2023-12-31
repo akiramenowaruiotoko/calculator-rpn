@@ -18,6 +18,9 @@ namespace calculator_simple
         private bool inputOverwrite = true;
         private bool decimalStatus = false;
 
+        // Variable for input key identification
+        string markText;
+
         // Instantiate .NET Stack collection
         private Stack<double> cStack = new Stack<double>();
 
@@ -42,19 +45,47 @@ namespace calculator_simple
             {
                 case Keys.Decimal:
                 case Keys.OemPeriod:
-                    ButtonDecimal_Click(this, e);
+                    markText = ".";
+                    break;
+                case Keys.Enter:
+                    markText = "Enter";
                     break;
                 case Keys.C:
-                    ButtonC_Click(this, e);
+                    markText = "C";
                     break;
+                case Keys.S:
+                    markText = "+/-";
+                    break;
+                case Keys.Delete:
+                    markText = "AC";
+                    break;
+                case Keys.Back:
+                    markText = "StackC";
+                    break;
+                case Keys.Add:
+                case Keys.Oemplus:
+                    markText = "+";
+                    break;
+                case Keys.Subtract:
+                case Keys.OemMinus:
+                    markText = "-";
+                    break;
+                case Keys.Multiply:
+                case Keys.Oem1:
+                    markText = "~";
+                    break;
+                case Keys.Divide:
+                case Keys.Oem2:
+                    markText = "€"; break;
                 default:
                     // call NumSet if eValue is 0 to 9
                     if ((eValue >= 0) && (eValue <= 9))
                     {
                         NumSet(eValue.ToString());
                     }
-                    break;
+                    return;
             }
+            Calc(markText);
         }
 
         /// <summary>
@@ -65,20 +96,10 @@ namespace calculator_simple
             // call NumSet
             NumSet(((Button)sender).Text);
         }
-        private void ButtonDecimal_Click(object sender, EventArgs e)
+        private void ButtonMarks_Click(object sender, EventArgs e)
         {
-            if (!decimalStatus)
-            {
-                textInput.Text += ".";
-                decimalStatus = true;
-                inputOverwrite = false;
-            }
-        }
-        private void ButtonC_Click(object sender, EventArgs e)
-        {
-            textInput.Text = "0";
-            decimalStatus = false;
-            inputOverwrite = true;
+            // call Calc
+            Calc(((Button)sender).Text);
         }
 
         /// <summary>
@@ -100,45 +121,119 @@ namespace calculator_simple
                 textInput.Text += numText;
             }
         }
-
-        private void ButtonexEnter_Click(object sender, EventArgs e)
+        private void Calc(string mark)
         {
+            // initialize textInput
+            textComment.Text = "";
 
-        }
+            // inputlabel Excluded processing switch
+            switch (mark)
+            {
+                case ".":
+                    // grant "."
+                    if (!decimalStatus)
+                    {
+                        textInput.Text += ".";
+                        decimalStatus = true;
+                        inputOverwrite = false;
+                    }
+                    return;
+                case "+/-":
+                    // revers sign
+                    if (textInput.Text.Contains('-'))
+                    {
+                        textInput.Text = textInput.Text.Replace("-", "");
+                    }
+                    else
+                    {
+                        textInput.Text = "-" + textInput.Text;
+                    }
+                    return;
+                case "StackC":
+                    // delete one stack
+                    if (cStack.Count < 1)
+                    {
+                        textComment.Text = "Stack is empty.";
+                        return;
+                    }
+                    cStack.Pop();
+                    goto stackLabelUpdate;
+                default: break;
+            }
 
-        private void ButtonexStackClear_Click(object sender, EventArgs e)
-        {
+            // Store the value of textInput in calcNum
+            double calcNum = double.Parse(textInput.Text);
 
-        }
+                // textInput reset
+                textInput.Text = "0";
+                decimalStatus = false;
+                inputOverwrite = true;
 
-        private void ButtonexSign_Click(object sender, EventArgs e)
-        {
+            // inputlabel Subject processing
+            switch (mark)
+            {
+                case "Enter":
+                    // Push the value of calcNum in stack
+                    cStack.Push(calcNum);
+                    goto stackLabelUpdate;
+                case "C":
+                    return;
+                case "AC":
+                    textStack1.Text = "";
+                    cStack.Clear();
+                    return;
+                default: break;
+            }
 
-        }
+            // Arithmetic processing stack confirmation
+            if (cStack.Count < 2)
+            {
+                textComment.Text = "Out of stack.";
+                return;
+            }
 
-        private void ButtonexAllClear_Click(object sender, EventArgs e)
-        {
+            // Pop the two variable from stack
+            double stack1 = cStack.Pop();
+            double stack2 = cStack.Pop();
 
-        }
+        // Operator switch processing
+        switch (mark)
+            {
+                case "+":
+                    cStack.Push(stack1 + stack2);
+                    break;
+                case "-":
+                    cStack.Push(stack2 - stack1);
+                    break;
+                case "~":
+                    cStack.Push(stack1 * stack2);
+                    break;
+                case "€":
+                    if (stack1 == 0.0)
+                    {
+                        cStack.Push(stack2);
+                        cStack.Push(stack1);
+                        textComment.Text = "Division by 0 is not possible.";
+                    }
+                    else
+                    {
+                        cStack.Push(stack2 / stack1);
+                    }
+                    break;
+                default: break;
+            }
 
-        private void ButtonexAdd_Click(object sender, EventArgs e)
-        {
+            // goto
+            stackLabelUpdate:
 
-        }
+            // initialize textStacks
+            textStack1.Text = "";
 
-        private void ButtonexSubtract_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ButtonexMultiply_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ButtonexDivide_Click(object sender, EventArgs e)
-        {
-
+            // update textStack
+            for (int i = cStack.Count; i > 0; i--)
+            {
+                textStack1.Text += "s[" + i + "]:" + cStack.ElementAt(i - 1) + ",";
+            }
         }
     }
 }

@@ -62,7 +62,7 @@
             textStack2 = new Label();
             textStack1 = new Label();
             label1 = new Label();
-            label2 = new Label();
+            textComment = new Label();
             label3 = new Label();
             SuspendLayout();
             // 
@@ -206,7 +206,7 @@
             buttonexDecimal.TabIndex = 13;
             buttonexDecimal.Text = ".";
             buttonexDecimal.UseVisualStyleBackColor = true;
-            buttonexDecimal.Click += ButtonDecimal_Click;
+            buttonexDecimal.Click += ButtonMarks_Click;
             // 
             // buttonexC
             // 
@@ -216,7 +216,7 @@
             buttonexC.TabIndex = 14;
             buttonexC.Text = "C";
             buttonexC.UseVisualStyleBackColor = true;
-            buttonexC.Click += ButtonC_Click;
+            buttonexC.Click += ButtonMarks_Click;
             // 
             // buttonexEnter
             // 
@@ -226,7 +226,7 @@
             buttonexEnter.TabIndex = 15;
             buttonexEnter.Text = "Enter";
             buttonexEnter.UseVisualStyleBackColor = true;
-            buttonexEnter.Click += ButtonexEnter_Click;
+            buttonexEnter.Click += ButtonMarks_Click;
             // 
             // buttonexStackClear
             // 
@@ -236,7 +236,7 @@
             buttonexStackClear.TabIndex = 16;
             buttonexStackClear.Text = "StackC";
             buttonexStackClear.UseVisualStyleBackColor = true;
-            buttonexStackClear.Click += ButtonexStackClear_Click;
+            buttonexStackClear.Click += ButtonMarks_Click;
             // 
             // buttonexAdd
             // 
@@ -246,7 +246,7 @@
             buttonexAdd.TabIndex = 17;
             buttonexAdd.Text = "+";
             buttonexAdd.UseVisualStyleBackColor = true;
-            buttonexAdd.Click += ButtonexAdd_Click;
+            buttonexAdd.Click += ButtonMarks_Click;
             // 
             // buttonexSubtract
             // 
@@ -256,7 +256,7 @@
             buttonexSubtract.TabIndex = 18;
             buttonexSubtract.Text = "-";
             buttonexSubtract.UseVisualStyleBackColor = true;
-            buttonexSubtract.Click += ButtonexSubtract_Click;
+            buttonexSubtract.Click += ButtonMarks_Click;
             // 
             // buttonexMultiply
             // 
@@ -266,7 +266,7 @@
             buttonexMultiply.TabIndex = 19;
             buttonexMultiply.Text = "×";
             buttonexMultiply.UseVisualStyleBackColor = true;
-            buttonexMultiply.Click += ButtonexMultiply_Click;
+            buttonexMultiply.Click += ButtonMarks_Click;
             // 
             // buttonexDivide
             // 
@@ -276,7 +276,7 @@
             buttonexDivide.TabIndex = 20;
             buttonexDivide.Text = "÷";
             buttonexDivide.UseVisualStyleBackColor = true;
-            buttonexDivide.Click += ButtonexDivide_Click;
+            buttonexDivide.Click += ButtonMarks_Click;
             // 
             // buttonexSign
             // 
@@ -286,7 +286,7 @@
             buttonexSign.TabIndex = 21;
             buttonexSign.Text = "+/-";
             buttonexSign.UseVisualStyleBackColor = true;
-            buttonexSign.Click += ButtonexSign_Click;
+            buttonexSign.Click += ButtonMarks_Click;
             // 
             // buttonexAllClear
             // 
@@ -296,7 +296,7 @@
             buttonexAllClear.TabIndex = 22;
             buttonexAllClear.Text = "AC";
             buttonexAllClear.UseVisualStyleBackColor = true;
-            buttonexAllClear.Click += ButtonexAllClear_Click;
+            buttonexAllClear.Click += ButtonMarks_Click;
             // 
             // labelStack5
             // 
@@ -415,15 +415,15 @@
             label1.TabIndex = 33;
             label1.Text = "comment";
             // 
-            // label2
+            // textComment
             // 
-            label2.BackColor = SystemColors.Control;
-            label2.Font = new Font("Yu Gothic UI", 12F);
-            label2.Location = new Point(170, 461);
-            label2.Name = "label2";
-            label2.Size = new Size(609, 45);
-            label2.TabIndex = 34;
-            label2.TextAlign = ContentAlignment.MiddleLeft;
+            textComment.BackColor = SystemColors.Control;
+            textComment.Font = new Font("Yu Gothic UI", 12F);
+            textComment.Location = new Point(170, 461);
+            textComment.Name = "textComment";
+            textComment.Size = new Size(609, 45);
+            textComment.TabIndex = 34;
+            textComment.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
@@ -442,7 +442,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(802, 520);
             Controls.Add(label3);
-            Controls.Add(label2);
+            Controls.Add(textComment);
             Controls.Add(label1);
             Controls.Add(textStack1);
             Controls.Add(textStack2);
@@ -519,7 +519,7 @@
         private Label textStack2;
         private Label textStack1;
         private Label label1;
-        private Label label2;
+        private Label textComment;
         private Label label3;
     }
 }
