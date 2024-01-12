@@ -279,7 +279,10 @@ namespace calculator_simple
         {
             for (int i = 5; i > 0; i--)
             {
+                // Sequential number control to textStack
                 Control[] textStacks = this.Controls.Find($"textStack{i}", true);
+
+                // output stack to the textStack.text 
                 if (cStack.Count >= i)
                 {
                     // スタックの値を表示
