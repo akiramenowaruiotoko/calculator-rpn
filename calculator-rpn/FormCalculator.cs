@@ -1,49 +1,46 @@
-using static System.Net.Mime.MediaTypeNames;
-
 namespace calculator_simple
 {
     public partial class FormCalculator : Form
     {
-        /// <summary>
-        ///  initial setting
-        /// </summary>
+        // UI関連の変数
+        private bool inputOverwrite = true;
+        private bool decimalStatus = false;
+        private string markText = "";
+        private readonly Stack<double> cStack = new();
+
+        // コンストラクタ
         public FormCalculator()
         {
             InitializeComponent();
 
-            // Detect key events throughout the form
+            // キーイベントを検出
             this.KeyPreview = true;
             this.KeyUp += FormCalculator_KeyUp;
         }
 
-        // setting textInput
-        private bool inputOverwrite = true;
-        private bool decimalStatus = false;
-
-        // Variable for input key identification
-        string markText = "";
-
-        // Instantiate .NET Stack collection
-        private Stack<double> cStack = new Stack<double>();
-
-        /// <summary>
-        ///  branch KeyUp events
-        /// </summary>
+        // キーイベントの処理
         private void FormCalculator_KeyUp(object? sender, KeyEventArgs e)
         {
             int eValue = e.KeyValue;
-            // Replace keyboard and keypad KeyCode values from 0 to 9
+
+            // キーコードの置き換え
             if ((eValue >= (int)Keys.D0) && (eValue <= (int)Keys.D9))
             {
                 eValue -= (int)Keys.D0;
             }
-            else if ((eValue >= (int)Keys.NumPad0) && (eValue >= (int)Keys.NumPad9))
+            else if ((eValue >= (int)Keys.NumPad0) && (eValue <= (int)Keys.NumPad9))
             {
                 eValue -= (int)Keys.NumPad0;
             }
 
-            // switch call function
-            switch (e.KeyCode)
+            // 入力キーに対する処理
+            HandleInputKey(e.KeyCode, eValue);
+        }
+
+        // 入力キーに対する処理
+        private void HandleInputKey(Keys keyCode, int eValue)
+        {
+            switch (keyCode)
             {
                 case Keys.Decimal:
                 case Keys.OemPeriod:
@@ -78,44 +75,42 @@ namespace calculator_simple
                     break;
                 case Keys.Divide:
                 case Keys.Oem2:
-                    markText = "÷"; break;
+                    markText = "÷";
+                    break;
                 default:
-                    // call NumSet if eValue is 0 to 9
                     if ((eValue >= 0) && (eValue <= 9))
                     {
+                        // 数字キーの場合はNumSetメソッドを呼び出し
                         NumSet(eValue.ToString());
                     }
                     return;
             }
+
+            // 入力キーに対する計算処理
             Calc(markText);
         }
 
-        /// <summary>
-        ///  Button_Click events
-        /// </summary>
+        // 数字ボタンのクリックイベント
         private void ButtonNums_Click(object sender, EventArgs e)
         {
-            // call NumSet
             NumSet(((Button)sender).Text);
         }
+
+        // 演算子ボタンのクリックイベント
         private void ButtonMarks_Click(object sender, EventArgs e)
         {
-            // call Calc
             Calc(((Button)sender).Text);
         }
 
-        /// <summary>
-        ///  functions
-        /// </summary>
+        // 数字の処理
         private void NumSet(string numText)
         {
-            // Digit limit 16 digits
             if (textInput.Text.Length > 16)
             {
-                textComment.Text = "inputText is Overflow : digit limit 16";
+                textComment.Text = "Input text is Overflow: Digit limit is 16";
                 return;
             }
-            // update textInput.Text
+
             if (inputOverwrite)
             {
                 textInput.Text = numText;
@@ -129,88 +124,123 @@ namespace calculator_simple
                 textInput.Text += numText;
             }
         }
+
+        // 演算の処理
         private void Calc(string mark)
         {
-            // initialize textInput
             textComment.Text = "";
 
-            // inputlabel Excluded processing switch
             switch (mark)
             {
                 case ".":
-                    // grant "."
-                    if (!decimalStatus)
-                    {
-                        textInput.Text += ".";
-                        decimalStatus = true;
-                        inputOverwrite = false;
-                    }
-                    return;
+                    HandleDecimalInput();
+                    break;
                 case "+/-":
-                    // revers sign
-                    if (textInput.Text.Contains('-'))
-                    {
-                        textInput.Text = textInput.Text.Replace("-", "");
-                    }
-                    else
-                    {
-                        textInput.Text = "-" + textInput.Text;
-                    }
-                    return;
+                    ReverseSign();
+                    break;
                 case "StackC":
-                    // delete one stack
-                    if (cStack.Count < 1)
-                    {
-                        textComment.Text = "Stack is empty.";
-                        return;
-                    }
-                    cStack.Pop();
-                    goto stackLabelUpdate;
-                default: break;
+                    DeleteOneStack();
+                    break;
+                default:
+                    PerformCalculation(mark);
+                    break;
             }
 
-            // Store the value of textInput in calcNum
+            UpdateStackLabels();
+        }
+
+        // 小数点の処理
+        private void HandleDecimalInput()
+        {
+            if (!decimalStatus)
+            {
+                textInput.Text += ".";
+                decimalStatus = true;
+                inputOverwrite = false;
+            }
+        }
+
+        // 符号反転の処理
+        private void ReverseSign()
+        {
+            if (textInput.Text.Contains('-'))
+            {
+                textInput.Text = textInput.Text.Replace("-", "");
+            }
+            else
+            {
+                textInput.Text = "-" + textInput.Text;
+            }
+        }
+
+        // スタックから一つ削除する処理
+        private void DeleteOneStack()
+        {
+            if (cStack.Count < 1)
+            {
+                textComment.Text = "Stack is empty.";
+                return;
+            }
+
+            cStack.Pop();
+        }
+
+        // 演算の実行
+        private void PerformCalculation(string mark)
+        {
             double calcNum = double.Parse(textInput.Text);
+            textInput.Text = "0";
+            decimalStatus = false;
+            inputOverwrite = true;
 
-                // textInput reset
-                textInput.Text = "0";
-                decimalStatus = false;
-                inputOverwrite = true;
-
-            // inputlabel Subject processing switch
             switch (mark)
             {
                 case "Enter":
-                    // stack limit 5
-                    if(cStack.Count >= 5)
-                    {
-                        textComment.Text = "stack is Overflow : stack limit 5";
-                        return;
-                    }
-                    // Push the value of calcNum in stack
-                    cStack.Push(calcNum);
-                    goto stackLabelUpdate;
+                    PushToStack(calcNum);
+                    break;
                 case "C":
-                    return;
+                    // Cキーが押された場合は何もしない
+                    break;
                 case "AC":
-                    cStack.Clear();
-                    goto stackLabelUpdate;
-                default: break;
+                    ClearStack();
+                    break;
+                default:
+                    PerformArithmeticOperation(mark);
+                    break;
+            }
+        }
+
+        // スタックにプッシュする処理
+        private void PushToStack(double value)
+        {
+            if (cStack.Count >= 5)
+            {
+                textComment.Text = "Stack is Overflow: Stack limit is 5";
+                return;
             }
 
-            // Arithmetic processing stack confirmation
+            cStack.Push(value);
+        }
+
+        // スタックをクリアする処理
+        private void ClearStack()
+        {
+            cStack.Clear();
+        }
+
+        // 四則演算の処理
+        private void PerformArithmeticOperation(string mark)
+        {
             if (cStack.Count < 2)
             {
                 textComment.Text = "Out of stack.";
                 return;
             }
 
-            // Pop the two variable from stack
             double stack1 = cStack.Pop();
             double stack2 = cStack.Pop();
 
-        // Operator switch processing
-        switch (mark)
+            switch (mark)
             {
                 case "+":
                     cStack.Push(stack1 + stack2);
@@ -222,33 +252,42 @@ namespace calculator_simple
                     cStack.Push(stack1 * stack2);
                     break;
                 case "÷":
-                    if (stack1 == 0.0)
-                    {
-                        cStack.Push(stack2);
-                        cStack.Push(stack1);
-                        textComment.Text = "Division by 0 is not possible.";
-                    }
-                    else
-                    {
-                        cStack.Push(stack2 / stack1);
-                    }
+                    HandleDivisionOperation(stack1, stack2);
                     break;
-                default: break;
+                default:
+                    break;
             }
+        }
 
-            // goto
-            stackLabelUpdate:
+        // 除算の処理
+        private void HandleDivisionOperation(double stack1, double stack2)
+        {
+            if (stack1 == 0.0)
+            {
+                cStack.Push(stack2);
+                cStack.Push(stack1);
+                textComment.Text = "Division by 0 is not possible.";
+            }
+            else
+            {
+                cStack.Push(stack2 / stack1);
+            }
+        }
 
-            // update textStack
+        // スタックラベルの更新
+        private void UpdateStackLabels()
+        {
             for (int i = 5; i > 0; i--)
             {
                 Control[] textStacks = this.Controls.Find($"textStack{i}", true);
                 if (cStack.Count >= i)
                 {
+                    // スタックの値を表示
                     textStacks[0].Text = cStack.ElementAt(i - 1).ToString();
                 }
                 else
                 {
+                    // スタックが不足する場合は表示をクリア
                     textStacks[0].Text = "";
                 }
             }
