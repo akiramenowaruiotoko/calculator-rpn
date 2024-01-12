@@ -478,7 +478,7 @@
             Controls.Add(labelInput);
             Controls.Add(labelTitle);
             Name = "FormCalculator";
-            Text = "Form1";
+            Text = "Calculator";
             ResumeLayout(false);
             PerformLayout();
         }
